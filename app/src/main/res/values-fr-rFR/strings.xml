@@ -6,4 +6,5 @@
     <string name="day">Jour</string>
     <string name="car_model">Modèle</string>
     <string name="owner">Propriétaire</string>
+    <string name="error">Pour une raison inconnue, les informations n\'ont pas étées trouvées</string>
 </resources>

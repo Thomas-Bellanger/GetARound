@@ -1,12 +1,9 @@
 package com.example.getaround.detailActivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toolbar
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.example.getaround.R
 import com.example.getaround.databinding.ActivityDetailBinding
-import com.example.getaround.databinding.ToolbarBinding
 import com.example.getaround.detailActivity.viewModel.DetailViewModel
 import com.example.getaround.mainActivity.viewModel.MainActivityViewModel
 import com.example.getaround.model.CarsModel
@@ -15,7 +12,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailBinding
     private val mainViewModel = MainActivityViewModel.getInstance()
     private val detailViewModel = DetailViewModel.getInstance()
-    lateinit var car : CarsModel
+    lateinit var car: CarsModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

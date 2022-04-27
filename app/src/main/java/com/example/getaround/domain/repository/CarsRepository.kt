@@ -19,6 +19,7 @@ class CarsRepository {
         }
     }
 
+    //call the Api for cars
     fun getCars(callbacks: Callbacks?) {
         //Create a weak reference to callback (avoid memory leaks)
         val callbacksWeakReference = WeakReference(callbacks)
@@ -36,7 +37,7 @@ class CarsRepository {
                 // Call the proper callback used in controller (MainFragment)
                 if (callbacksWeakReference.get() != null)
                     callbacksWeakReference.get()!!
-                    .onResponse(response.body())
+                        .onResponse(response.body())
             }
 
             override fun onFailure(call: Call<List<CarsModel>>, t: Throwable) {

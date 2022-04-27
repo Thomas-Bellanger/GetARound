@@ -4,7 +4,7 @@ import com.example.getaround.domain.repository.CarsRepository
 
 class CarsManager {
 
-    private var carsRepository: CarsRepository? = null
+    private var carsRepository = CarsRepository.getInstance()
 
     //instance
     companion object {
@@ -17,6 +17,7 @@ class CarsManager {
         }
     }
 
+    //call the Api for cars
     fun getCars(callbacks: CarsRepository.Callbacks?) {
         carsRepository?.getCars(callbacks)
     }

@@ -2,9 +2,7 @@ package com.example.getaround.mainActivity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import com.example.getaround.R
 import com.example.getaround.databinding.ActivityMainBinding
 import com.example.getaround.detailActivity.DetailActivity
@@ -22,13 +20,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        viewModel?.getCars()
+        viewModel?.getCars(this)
         viewModel?.context = this
         viewModel?.configureRecyclerView(binding, this)
         viewModel?.carsList?.observe(this, this::initCarsList)
     }
 
-    private fun initCarsList(list: List<CarsModel>){
+    //init the recyclerview
+    private fun initCarsList(list: List<CarsModel>) {
         viewModel?.carRecyclerView?.adapter = CarsRecyclerViewAdapter(list)
         configureOnClickRecyclerView(list)
     }
@@ -42,5 +41,4 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
     }
-
 }
