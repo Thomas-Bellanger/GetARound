@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- car item recycler view -->
+    <dimen name="image_size">300dp</dimen>
+    <dimen name="image_height">170dp</dimen>
+    <dimen name="car_item_margin_top">10dp</dimen>
+    <dimen name="car_item_margin_start">10dp</dimen>
+    <!--detail activity -->
+    <dimen name="car_image_margin_bottom">10dp</dimen>
+    <dimen name="car_model_margin_start">15dp</dimen>
+    <dimen name="car_model_text_size">18sp</dimen>
+    <dimen name="price_margin_end">10dp</dimen>
+    <dimen name="owner_margin_top">15dp</dimen>
+    <dimen name="owner_margin_bottom">5dp</dimen>
+    <dimen name="avatar_margin_start">10dp</dimen>
+    <dimen name="avatar_size">80dp</dimen>
+    <dimen name="owner_name_margin_start">15dp</dimen>
+</resources>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detailActivity.DetailActivity"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/detailImage"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="40"
+        android:src="#757575"
+        android:layout_marginBottom="@dimen/car_image_margin_bottom"/>
+
+<LinearLayout
+    android:layout_marginStart="@dimen/car_model_margin_start"
+    android:layout_width="match_parent"
+    android:layout_height="0px"
+    android:layout_weight="10"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_weight="70"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/carModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/car_model"
+            android:textSize="@dimen/car_model_text_size"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/carStar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/carStar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/carStar3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/carStar4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/carStar5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+            <TextView
+                android:id="@+id/carVoteNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="(0)"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:textSize="@dimen/car_model_text_size"
+        android:id="@+id/carPrice"
+        android:layout_width="0px"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:text="@string/price"
+        android:gravity="end"
+        android:textStyle="bold"
+        android:layout_marginEnd="@dimen/price_margin_end" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/owner_margin_top"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0px"
+            android:layout_weight="25"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/owner"
+            android:layout_marginBottom="@dimen/owner_margin_bottom"/>
+        <TextView
+            android:layout_width="0px"
+            android:layout_weight="80"
+            android:gravity="center"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+<LinearLayout
+    android:layout_marginStart="@dimen/avatar_margin_start"
+    android:layout_width="match_parent"
+    android:layout_height="0px"
+    android:layout_weight="20"
+    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/detailAvatar"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:src="@drawable/ic_launcher_background"/>
+    <LinearLayout
+        android:layout_marginTop="@dimen/owner_name_margin_start"
+        android:gravity="center"
+        android:layout_width="0px"
+        android:layout_height="wrap_content"
+        android:layout_weight="80"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/detailOwnerName"
+            android:layout_marginStart="@dimen/owner_name_margin_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_marginStart="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ownerStar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/ownerStar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/ownerStar3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/ownerStar4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+
+            <ImageView
+                android:id="@+id/ownerStar5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_star_rate_amber_400_24dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

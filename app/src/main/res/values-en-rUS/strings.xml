@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GetARound</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="day">Day</string>
+    <string name="car_model">Car model</string>
+    <string name="owner">Owner</string>
+</resources>
