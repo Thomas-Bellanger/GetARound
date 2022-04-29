@@ -1,9 +1,8 @@
 package com.example.getaround.mainActivity.viewModel
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,7 +20,7 @@ class MainActivityViewModel : CarsRepository.Callbacks {
         MutableLiveData<List<CarsModel>>()
     var carRecyclerView: RecyclerView? = null
     var context: Context? = null
-    var mainActivity: Activity? = null
+    private var mainActivity: Activity? = null
     var car: CarsModel? = null
 
     //call the Api
@@ -42,69 +41,6 @@ class MainActivityViewModel : CarsRepository.Callbacks {
         )
     }
 
-    //get the rating and change the stars icon
-    fun getStars(
-        star1: ImageView,
-        star2: ImageView,
-        star3: ImageView,
-        star4: ImageView,
-        star5: ImageView,
-        rate: Double
-    ) {
-        val halfStar: Drawable =
-            context?.getDrawable(R.drawable.baseline_star_half_amber_400_24dp)!!
-        val emptyStar: Drawable =
-            context?.getDrawable(R.drawable.baseline_star_border_amber_400_24dp)!!
-        when {
-            rate == 5.0 -> {
-            }
-            rate > 4.5 -> {
-                star5.setImageDrawable(halfStar)
-            }
-            rate > 4 -> {
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 3.5 -> {
-                star4.setImageDrawable(halfStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 3 -> {
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-
-            rate > 2.5 -> {
-                star3.setImageDrawable(halfStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 2 -> {
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 1.5 -> {
-                star2.setImageDrawable(halfStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 1 -> {
-                star2.setImageDrawable(emptyStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 0.5 -> {
-                star1.setImageDrawable(halfStar)
-                star2.setImageDrawable(emptyStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-        }
-    }
-
     //response of the Api Call
     override fun onResponse(response: List<CarsModel>?) {
         carsList.value = response
@@ -119,6 +55,7 @@ class MainActivityViewModel : CarsRepository.Callbacks {
 
     //instance
     companion object {
+        @SuppressLint("StaticFieldLeak")
         @Volatile
         private var instance: MainActivityViewModel? = null
         fun getInstance(): MainActivityViewModel? {

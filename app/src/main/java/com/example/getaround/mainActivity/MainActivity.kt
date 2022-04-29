@@ -13,7 +13,7 @@ import com.example.getaround.utils.ItemClickSupport
 
 class MainActivity : AppCompatActivity() {
     private val viewModel = MainActivityViewModel.getInstance()
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

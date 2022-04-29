@@ -33,11 +33,8 @@ class CarsRecyclerViewAdapter(private val cars: List<CarsModel>) :
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var binding: CarItemBinding = CarItemBinding.bind(itemView)
+        private var binding: CarItemBinding = CarItemBinding.bind(itemView)
         private val viewModel = MainActivityViewModel.getInstance()
-
-        init {
-        }
 
         //get info from the car and change the text with it
         fun update(car: CarsModel) {
@@ -54,14 +51,7 @@ class CarsRecyclerViewAdapter(private val cars: List<CarsModel>) :
                 .into(binding.carItemImageView)
             ("(" + car.rating?.count + ")").also { binding.carItemVoteNumber.text = it }
             if (rate != null) {
-                viewModel?.getStars(
-                    binding.carItemStar1,
-                    binding.carItemStar2,
-                    binding.carItemStar3,
-                    binding.carItemStar4,
-                    binding.carItemStar5,
-                    rate
-                )
+                binding.ratingBarItem.rating = rate.toFloat()
             }
         }
     }

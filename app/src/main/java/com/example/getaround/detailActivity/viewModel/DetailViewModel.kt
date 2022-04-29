@@ -1,8 +1,8 @@
 package com.example.getaround.detailActivity.viewModel
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.widget.ImageView
+import android.widget.RatingBar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.getaround.R
@@ -29,92 +29,29 @@ class DetailViewModel {
             .into(binding.detailAvatar)
         car.rating?.average?.let {
             getStars(
-                binding.carStar1,
-                binding.carStar2,
-                binding.carStar3,
-                binding.carStar4,
-                binding.carStar5,
+                binding.ratingCar,
                 it
             )
         }
         car.owner?.rating?.average?.let {
             getStars(
-                binding.ownerStar1,
-                binding.ownerStar2,
-                binding.ownerStar3,
-                binding.ownerStar4,
-                binding.ownerStar5,
-                it
+                binding.ratingOwner, it
             )
         }
         binding.detailOwnerName.text = car.owner?.name
     }
 
     //get the rating and change the stars icon
-    fun getStars(
-        star1: ImageView,
-        star2: ImageView,
-        star3: ImageView,
-        star4: ImageView,
-        star5: ImageView,
+    private fun getStars(
+        ratingBar: RatingBar,
         rate: Double
     ) {
-        val halfStar: Drawable =
-            context?.getDrawable(R.drawable.baseline_star_half_amber_400_24dp)!!
-        val emptyStar: Drawable =
-            context?.getDrawable(R.drawable.baseline_star_border_amber_400_24dp)!!
-        when {
-            rate == 5.0 -> {
-            }
-            rate > 4.5 -> {
-                star5.setImageDrawable(halfStar)
-            }
-            rate > 4 -> {
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 3.5 -> {
-                star4.setImageDrawable(halfStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 3 -> {
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-
-            rate > 2.5 -> {
-                star3.setImageDrawable(halfStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 2 -> {
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 1.5 -> {
-                star2.setImageDrawable(halfStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 1 -> {
-                star2.setImageDrawable(emptyStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-            rate > 0.5 -> {
-                star1.setImageDrawable(halfStar)
-                star2.setImageDrawable(emptyStar)
-                star3.setImageDrawable(emptyStar)
-                star4.setImageDrawable(emptyStar)
-                star5.setImageDrawable(emptyStar)
-            }
-        }
+        ratingBar.rating = rate.toFloat()
     }
 
     //instance
     companion object {
+        @SuppressLint("StaticFieldLeak")
         @Volatile
         private var instance: DetailViewModel? = null
         fun getInstance(): DetailViewModel? {
