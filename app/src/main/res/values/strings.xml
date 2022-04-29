@@ -5,7 +5,7 @@
     <string name="day">Day</string>
     <string name="car_model">Car model</string>
     <string name="owner">Owner</string>
-    <string name="error">For an unknown reason, informations can\'t be found</string>
+    <string name="error">For an unknown reason, information can\'t be found</string>
     <string name="car_image">car image</string>
-    <string name="_0">(0)</string>
+    <string name="_0" translatable="false">(0)</string>
 </resources>

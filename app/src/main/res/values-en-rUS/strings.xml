@@ -7,4 +7,5 @@
     <string name="car_model">Car model</string>
     <string name="owner">Owner</string>
     <string name="error">For an unknown reason, informations can\'t be found</string>
+    <string name="car_image">Car image</string>
 </resources>
