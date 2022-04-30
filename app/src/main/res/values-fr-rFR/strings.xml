@@ -8,4 +8,8 @@
     <string name="owner">Propriétaire</string>
     <string name="error">Pour une raison inconnue, les informations n\'ont pas étées trouvées</string>
     <string name="car_image">Image de la voiture</string>
+    <string name="retry">Réessayer</string>
+    <string name="owner_avatar">Avatar du propriétaire</string>
+    <string name="error_internet">Pas d\'internet</string>
+    <string name="success">Succès</string>
 </resources>

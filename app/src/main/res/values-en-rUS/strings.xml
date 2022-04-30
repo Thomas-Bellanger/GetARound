@@ -8,4 +8,8 @@
     <string name="owner">Owner</string>
     <string name="error">For an unknown reason, informations can\'t be found</string>
     <string name="car_image">Car image</string>
+    <string name="retry">Retry</string>
+    <string name="owner_avatar">Owner\'s avatar</string>
+    <string name="error_internet">No internet</string>
+    <string name="success">Success</string>
 </resources>

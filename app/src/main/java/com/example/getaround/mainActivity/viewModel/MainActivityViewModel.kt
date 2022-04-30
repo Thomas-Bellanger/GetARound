@@ -3,6 +3,8 @@ package com.example.getaround.mainActivity.viewModel
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.net.ConnectivityManager
+import android.os.Build
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -25,8 +27,8 @@ class MainActivityViewModel : CarsRepository.Callbacks {
 
     //call the Api
     fun getCars(activity: Activity) {
-        mainActivity = activity
-        carsManager?.getCars(this)
+            mainActivity = activity
+            carsManager?.getCars(this)
     }
 
     //recyclerview

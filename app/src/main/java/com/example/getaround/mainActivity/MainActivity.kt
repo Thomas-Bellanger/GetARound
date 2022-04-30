@@ -1,7 +1,13 @@
 package com.example.getaround.mainActivity
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.os.Build
 import android.os.Bundle
+import android.view.View.GONE
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getaround.R
 import com.example.getaround.databinding.ActivityMainBinding
@@ -20,14 +26,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        viewModel?.getCars(this)
         viewModel?.context = this
         viewModel?.configureRecyclerView(binding, this)
+        isInternetAvailable()
         viewModel?.carsList?.observe(this, this::initCarsList)
+        binding.retryBtn.setOnClickListener { isInternetAvailable() }
     }
 
     //init the recyclerview
     private fun initCarsList(list: List<CarsModel>) {
+        binding.progressBar.visibility = GONE
+        binding.retryBtn.visibility = GONE
         viewModel?.carRecyclerView?.adapter = CarsRecyclerViewAdapter(list)
         configureOnClickRecyclerView(list)
     }
@@ -40,5 +49,20 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, DetailActivity::class.java)
                 startActivity(intent)
             }
+    }
+
+    private fun isInternetAvailable() {
+        val connectivityManager =
+            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val networkCapabilities = connectivityManager.isDefaultNetworkActive
+            if(networkCapabilities){
+                Toast.makeText(this,getString(R.string.error_internet),Toast.LENGTH_SHORT).show()
+            }
+            else{
+                viewModel?.getCars(this)
+                Toast.makeText(this,getString(R.string.success),Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

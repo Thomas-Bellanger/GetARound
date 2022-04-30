@@ -6,6 +6,10 @@
     <string name="car_model">Car model</string>
     <string name="owner">Owner</string>
     <string name="error">For an unknown reason, information can\'t be found</string>
+    <string name="success">Success</string>
+    <string name="error_internet">No internet</string>
     <string name="car_image">car image</string>
     <string name="_0" translatable="false">(0)</string>
+    <string name="retry">Retry</string>
+    <string name="owner_avatar">Owner\'s avatar</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.getaround.domain.repository
 
+import android.util.Log
 import com.example.getaround.model.CarsModel
 import com.example.getaround.utils.ApiService
 import retrofit2.Call
@@ -42,6 +43,7 @@ class CarsRepository {
 
             override fun onFailure(call: Call<List<CarsModel>>, t: Throwable) {
                 // 2.5 - Call the proper callback used in controller (MainFragment)
+                Log.e("fail", "fail  "+t.message)
                 if (callbacksWeakReference.get() != null) callbacksWeakReference.get()!!.onFailure()
             }
         })
