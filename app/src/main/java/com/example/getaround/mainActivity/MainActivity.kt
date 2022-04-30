@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    //check if internet is available or not
+    @Suppress("DEPRECATION")
     private fun isInternetAvailable() {
         binding.progressBar.visibility = VISIBLE
         val connectivityManager =
@@ -65,9 +67,23 @@ class MainActivity : AppCompatActivity() {
                 viewModel?.getCars(this)
             }
             else{
-                binding.progressBar.visibility = GONE
-                Toast.makeText(this,getString(R.string.error_internet),Toast.LENGTH_SHORT).show()
+               noInternet()
             }
         }
+        else {
+            val netInfo = connectivityManager.activeNetworkInfo
+            if(netInfo != null && netInfo.isConnectedOrConnecting){
+                viewModel?.getCars(this)
+            }
+            else{
+                noInternet()
+            }
+        }
+    }
+
+    // if there is no internet
+    private fun noInternet(){
+        binding.progressBar.visibility = GONE
+        Toast.makeText(this,getString(R.string.error_internet),Toast.LENGTH_SHORT).show()
     }
 }
