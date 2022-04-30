@@ -6,7 +6,9 @@ import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.getaround.R
 import com.example.getaround.databinding.ActivityMainBinding
@@ -16,10 +18,12 @@ import com.example.getaround.mainActivity.viewModel.MainActivityViewModel
 import com.example.getaround.model.CarsModel
 import com.example.getaround.utils.ItemClickSupport
 
+
 class MainActivity : AppCompatActivity() {
     private val viewModel = MainActivityViewModel.getInstance()
     private lateinit var binding: ActivityMainBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -29,12 +33,14 @@ class MainActivity : AppCompatActivity() {
         viewModel?.configureRecyclerView(binding, this)
         isInternetAvailable()
         viewModel?.carsList?.observe(this, this::initCarsList)
-        binding.retryBtn.setOnClickListener { isInternetAvailable() }
+        binding.retryBtn.setOnClickListener { isInternetAvailable()
+        }
     }
 
     //init the recyclerview
     private fun initCarsList(list: List<CarsModel>) {
         binding.progressBar.visibility = GONE
+        binding.noInfoText.visibility = GONE
         binding.retryBtn.visibility = GONE
         viewModel?.carRecyclerView?.adapter = CarsRecyclerViewAdapter(list)
         configureOnClickRecyclerView(list)
@@ -51,16 +57,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isInternetAvailable() {
+        binding.progressBar.visibility = VISIBLE
         val connectivityManager =
             this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val networkCapabilities = connectivityManager.isDefaultNetworkActive
-            if(networkCapabilities){
-                Toast.makeText(this,getString(R.string.error_internet),Toast.LENGTH_SHORT).show()
+            val networkCapabilities = connectivityManager.activeNetwork
+            if(networkCapabilities!=null){
+                viewModel?.getCars(this)
             }
             else{
-                viewModel?.getCars(this)
-                Toast.makeText(this,getString(R.string.success),Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = GONE
+                Toast.makeText(this,getString(R.string.error_internet),Toast.LENGTH_SHORT).show()
             }
         }
     }

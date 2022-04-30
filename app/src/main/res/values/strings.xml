@@ -12,4 +12,5 @@
     <string name="_0" translatable="false">(0)</string>
     <string name="retry">Retry</string>
     <string name="owner_avatar">Owner\'s avatar</string>
+    <string name="no_informations_available">No informations Available</string>
 </resources>

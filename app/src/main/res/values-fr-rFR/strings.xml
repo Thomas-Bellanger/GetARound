@@ -12,4 +12,5 @@
     <string name="owner_avatar">Avatar du propriétaire</string>
     <string name="error_internet">Pas d\'internet</string>
     <string name="success">Succès</string>
+    <string name="no_informations_available">Aucune information disponible</string>
 </resources>
